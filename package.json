@@ -2,9 +2,11 @@
   "name": "admin_functions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run dev",
+    "dev": "parcel src/index.html",
+    "dev:api": "nodemon api/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +22,18 @@
   "dependencies": {
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
+    "currency-symbols": "^0.4.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "file-system": "^2.2.2",
+    "nodemon": "^2.0.4",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.26.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6"
   }
 }
