@@ -1,12 +1,19 @@
 require('dotenv').config()
 
 const express = require('express'),
+	session = require('express-session'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	path = require('path'),
 	fs = require('file-system')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(session({
+    secret: 'something crazy',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 app.post('/new-subscription', (req, res) => {
 	const newSub = req.body,
@@ -37,6 +44,12 @@ app.post('/new-subscription', (req, res) => {
 	fs.writeFileSync(path.join(__dirname, '../_data/subscriptions.json'), JSON.stringify(subscriptionList, null, '	'))
 
 	res.redirect('//localhost:1234/expenses')
+})
+
+app.get('/xero', async (req, res) => {
+
+	
+	res.end()
 })
 
 app.listen(process.env.PORT || 3000, () => {
